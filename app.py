@@ -38,13 +38,13 @@ def update():
 
 @app.route("/delete") #Delete Student
 def delete():
-        id2 = request.args.get('id')
-        cur = mysql.connection.cursor()
-        s = "delete from students where studentID = '%s'" %(id2)
-        cur.execute(s)
-        mysql.connection.commit()
+  id2 = request.args.get('id')
+  cur = mysql.connection.cursor()
+  s = "delete from students where studentID = '%s'" %(id2)
+  cur.execute(s)
+  mysql.connection.commit()
 
-        return '{"Result":"Delete Successful:}'
+  return '{"Result":"Delete Successful:}'
 
 @app.route("/") #Default - Show Data
 def hello(): # Name of the method
