@@ -27,11 +27,17 @@ def add():
 
 @app.route("/update") #Add Student
 def update():
+  id2 = request.args.get('id')
   name = request.args.get('name')
   email = request.args.get('email')
+  print('id')
+  print('name')
+  print('email')
   cur = mysql.connection.cursor() #create a connection to the SQL instance
-
-  return '{"Result":"Not done"}'
+  s = '''UPDATE students SET studentName = '%s', email = '%s' WHERE studentID =%s''' %(name,email,id2)
+  print(s)
+  cur.execute(s)
+  return '{"Result":"Successfully update"}'
 
 @app.route("/delete") #Delete Student
 def delete():
